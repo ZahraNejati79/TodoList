@@ -13,3 +13,13 @@
   border-radius: 8px;
   padding: 20px;
 }
+.todo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+.completed {
+  text-decoration: line-through;
+  color: #ff000052;
+}
