@@ -1,4 +1,4 @@
-const Todo = ({ todo, onComplete, onDelete }) => {
+const Todo = ({ todo, onComplete, onDelete, onEdit }) => {
   return (
     <div key={todo.id} className="todo">
       <div
@@ -8,7 +8,7 @@ const Todo = ({ todo, onComplete, onDelete }) => {
         {todo.text}
       </div>
       <div>
-        <button>Edit</button>
+        <button onClick={onEdit}>Edit</button>
         <button onClick={() => onDelete(todo.id)}>delete</button>
       </div>
     </div>
