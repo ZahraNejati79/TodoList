@@ -23,3 +23,11 @@
   text-decoration: line-through;
   color: #ff000052;
 }
+input {
+  outline: none;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+}
+input:focus {
+  border: 1px solid blueviolet;
+}
