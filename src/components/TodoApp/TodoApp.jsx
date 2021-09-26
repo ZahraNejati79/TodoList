@@ -1,9 +1,12 @@
 import { useState } from "react";
 import TodoForm from "./TodoForm/TodoForm";
 import TodoList from "./TodoList/Todolist";
+import ShowComplete from "./ShowComplete/ShowComplete";
 
 const TodoApp = () => {
   const [todos, setTodos] = useState([]);
+  const [filter, setFilter] = useState([]);
+
   const addTodo = (input) => {
     const newTodo = {
       id: Math.floor(Math.random() * 1000),
@@ -34,8 +37,10 @@ const TodoApp = () => {
     updatedTodos[index] = todoSelected;
     setTodos(updatedTodos);
   };
+
   return (
     <div>
+      <ShowComplete status={todos.filter((todo) => !todo.isCompleted).length} />
       <TodoForm submitTodo={addTodo} />
       <TodoList
         todos={todos}

@@ -8,8 +8,12 @@ const Todo = ({ todo, onComplete, onDelete, onEdit }) => {
         {todo.text}
       </div>
       <div>
-        <button onClick={onEdit}>Edit</button>
-        <button onClick={() => onDelete(todo.id)}>delete</button>
+        <button className="edit" onClick={onEdit}>
+          Edit
+        </button>
+        <button className="delete" onClick={() => onDelete(todo.id)}>
+          delete
+        </button>
       </div>
     </div>
   );

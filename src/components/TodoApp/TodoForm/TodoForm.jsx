@@ -5,7 +5,7 @@ const TodoForm = (props) => {
   useEffect(() => {
     inputRef.current.focus();
   }, []);
-  const [todo, setTodo] = useState("");
+  const [todo, setTodo] = useState(props.edit ? props.edit.text : "");
   const changeHandler = (e) => {
     setTodo(e.target.value);
   };
@@ -16,29 +16,18 @@ const TodoForm = (props) => {
   };
   return (
     <form onSubmit={submitTodo}>
-      {props.edit ? (
-        <>
-          <input
-            type="text"
-            value={todo}
-            onChange={changeHandler}
-            placeholder="Update todo ..."
-            ref={inputRef}
-          />
-          <button type="submit">Update</button>
-        </>
-      ) : (
-        <>
-          <input
-            type="text"
-            value={todo}
-            onChange={changeHandler}
-            placeholder="Add todo"
-            ref={inputRef}
-          />
-          <button type="submit">Add</button>
-        </>
-      )}
+      <div className="formControl">
+        <input
+          type="text"
+          value={todo}
+          onChange={changeHandler}
+          placeholder={props.edit ? "Update Todo" : "Add Todo"}
+          ref={inputRef}
+        />
+        <button className={props.edit ? "update" : "Add"} type="submit">
+          {props.edit ? "Update" : "Add"}
+        </button>
+      </div>
     </form>
   );
 };

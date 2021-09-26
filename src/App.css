@@ -25,9 +25,44 @@
 }
 input {
   outline: none;
-  border: 1px solid #e1e1e1;
-  border-radius: 8px;
+  border: 2px solid #e1e1e1;
+  border-radius: 5px;
+  padding: 5px;
 }
 input:focus {
-  border: 1px solid blueviolet;
+  border: 2px solid rgb(155, 70, 0);
+}
+.formControl {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 20rem;
+  margin-top: 10px;
+}
+button {
+  cursor: pointer;
+  padding: 4px 7px;
+  border: none;
+  border-radius: 5px;
+}
+.Add {
+  color: white;
+  background-color: rgb(155, 70, 0);
+  border: 2px solid rgb(155, 70, 0);
+}
+.edit {
+  color: rgb(155, 70, 0);
+  background-color: white;
+  border: 2px solid rgb(155, 70, 0);
+}
+.delete {
+  color: rgb(146, 131, 120);
+  background-color: white;
+  border: 2px solid rgb(146, 131, 120);
+  margin-left: 10px;
+}
+.update {
+  color: rgb(155, 70, 0);
+  background-color: white;
+  border: 2px solid rgb(155, 70, 0);
 }
