@@ -66,3 +66,10 @@ button {
   background-color: white;
   border: 2px solid rgb(155, 70, 0);
 }
+.reactSelect:focus {
+  outline: none;
+  background-color: red;
+}
+.reactSelect {
+  background-color: red;
+}

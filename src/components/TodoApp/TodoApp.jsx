@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TodoForm from "./TodoForm/TodoForm";
 import TodoList from "./TodoList/Todolist";
 import ShowComplete from "./ShowComplete/ShowComplete";
@@ -6,6 +6,12 @@ import ShowComplete from "./ShowComplete/ShowComplete";
 const TodoApp = () => {
   const [todos, setTodos] = useState([]);
   const [filter, setFilter] = useState([]);
+  const [selectedOption, setSelectedOption] = useState("All");
+
+  useEffect(() => {
+    setSelectedOption(selectedOption);
+    selectStatus(selectedOption);
+  }, [todos, selectedOption]);
 
   const addTodo = (input) => {
     const newTodo = {
@@ -37,13 +43,41 @@ const TodoApp = () => {
     updatedTodos[index] = todoSelected;
     setTodos(updatedTodos);
   };
+  const changeHandler = (selectedOption) => {
+    setSelectedOption(selectedOption.value);
+    console.log("changeHandler", selectedOption);
+  };
 
+  const selectStatus = (selectOption) => {
+    switch (selectOption) {
+      case "All": {
+        setFilter(todos);
+        break;
+      }
+      case "Completed": {
+        setFilter(todos.filter((todo) => todo.isCompleted));
+        break;
+      }
+      case "Uncompleted": {
+        setFilter(todos.filter((todo) => !todo.isCompleted));
+        break;
+      }
+      default: {
+        setFilter(todos);
+        break;
+      }
+    }
+  };
   return (
     <div>
-      <ShowComplete status={todos.filter((todo) => !todo.isCompleted).length} />
+      <ShowComplete
+        completed={todos.filter((todo) => !todo.isCompleted).length}
+        selectedOption={selectedOption}
+        changeHandler={changeHandler}
+      />
       <TodoForm submitTodo={addTodo} />
       <TodoList
-        todos={todos}
+        todos={filter}
         onComplete={completeHandler}
         onDelete={deleteHandler}
         onUpdateTodo={onUpdateTodo}
